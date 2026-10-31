@@ -1,0 +1,933 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>BBU Learning Library</title>
+    <style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 80px;
+}
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background: #f8fafc;
+    color: #1e293b;
+    line-height: 1.6;
+}
+a {
+    text-decoration: none;
+}
+.header {
+    background: #0f172a;
+    color: white;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px ;
+    padding-left: 6%;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+--Merl TOR---
+
+
+
+.logo h1 {
+    font-size: 28px;
+    color: white;
+}
+.logo span {
+    color: #38bdf8;
+}
+
+.navbar ul {
+    list-style: none;
+    display: flex;
+    align-items: center;
+}
+
+.navbar ul li {
+    position: relative;
+}
+
+.navbar ul li a {
+    display: block;
+    color: white;
+    padding: 12px 18px;
+    font-size: 16px;
+    transition: 0.3s;
+}
+
+.navbar ul li a:hover,
+.navbar ul li a.active {
+    color: #38bdf8;
+}
+
+
+.navbar .dropdown-menu {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: auto;
+    z-index: 1100;
+    background: #0f172a;
+    min-width: 220px;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+    flex-direction: column; 
+}
+.dropdown-menu li a {
+    padding: 12px 18px;
+}
+.navbar ul li.profile-item {
+    margin-left: 12px;
+}
+.profile-pic {
+    display: block;
+    width: 44px;
+    height: 44px;
+    padding: 0;
+    border-radius: 50%;
+    border: 2px solid #38bdf8;
+    overflow: hidden;
+    background: #1e293b url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%2338bdf8'><circle cx='12' cy='8' r='4'/><path d='M4 21c0-4.4 3.6-7 8-7s8 2.6 8 7z'/></svg>") center/70% no-repeat;
+    transition: 0.3s;
+}
+.navbar ul li a.profile-pic {
+    padding: 0;
+}
+.profile-pic:hover {
+    border-color: white;
+    transform: scale(1.08);
+}
+.profile-pic img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+.dropdown-menu li a:hover {
+    background: #1e293b;
+    color: #38bdf8;
+}
+
+.navbar .dropdown:hover .dropdown-menu,
+.navbar .dropdown:focus-within .dropdown-menu {
+    display: block;
+}
+
+.hero {
+    min-height: 420px;
+    background:linear-gradient(90deg, rgba(15, 23, 42, 0.96), rgba(30, 64, 175, 0.85));
+    display: flex;
+    align-items: center;
+    padding: 60px 8%;
+    color: white;
+}
+
+.hero-content {
+    max-width: 750px;
+}
+
+.hero-label {
+    color: #7dd3fc;
+    font-size: 14px;
+    font-weight: bold;
+    letter-spacing: 3px;
+}
+
+.hero h1 {
+    font-size: 48px;
+    line-height: 1.25;
+    margin: 20px 0;
+}
+
+.hero h1 span {
+    color: #38bdf8;
+}
+
+.hero p {
+    font-size: 18px;
+    color: #e2e8f0;
+    max-width: 600px;
+    margin-bottom: 30px;
+}
+
+.hero-btn {
+    display: inline-block;
+
+    background: #38bdf8;
+    color: #0f172a;
+
+    padding: 13px 28px;
+    border-radius: 6px;
+
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+.hero-btn:hover {
+    background: white;
+    transform: translateY(-3px);
+}
+
+.container {
+    display: grid;
+
+    grid-template-columns: 3fr 1fr;
+
+    gap: 30px;
+
+    padding: 60px 6%;
+}
+
+.main-content {
+    min-width: 0;
+}
+
+
+
+.section-heading {
+    margin-bottom: 45px;
+}
+
+.section-heading span,
+.about-section span,
+.contact-section span {
+    color: #0284c7;
+
+    font-size: 13px;
+    font-weight: bold;
+
+    letter-spacing: 2px;
+}
+
+.section-heading h2 {
+    font-size: 32px;
+    margin: 10px 0;
+    color: #0f172a;
+}
+
+.section-heading p {
+    font-size: 16px;
+    color: #64748b;
+}
+
+
+
+.section-title {
+    margin-bottom: 25px;
+}
+
+.section-title h2 {
+    font-size: 26px;
+    color: #0f172a;
+}
+
+.section-title p {
+    color: #64748b;
+    margin-top: 5px;
+}
+
+
+
+.book-grid {
+    display: grid;
+
+    grid-template-columns: repeat(2, 1fr);
+
+    gap: 22px;
+}
+
+
+
+.book-card {
+    background: white;
+
+    padding: 28px;
+
+    border-radius: 12px;
+
+    border: 1px solid #e2e8f0;
+
+    transition: 0.3s;
+}
+
+.book-card:hover {
+    transform: translateY(-6px);
+
+    box-shadow: 0 12px 30px rgba(0,0,0,0.08);
+
+    border-color: #38bdf8;
+}
+
+.book-icon {
+    font-size: 35px;
+    margin-bottom: 15px;
+}
+
+.book-card h3 {
+    color: #0f172a;
+    font-size: 19px;
+    margin-bottom: 10px;
+}
+
+.book-card p {
+    color: #64748b;
+    font-size: 15px;
+    margin-bottom: 20px;
+}
+
+.book-card a {
+    color: #0284c7;
+    font-weight: bold;
+    font-size: 14px;
+}
+
+.book-card a:hover {
+    color: #0f172a;
+}
+
+
+.sidebar {
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+}
+
+.side-card {
+    background: white;
+
+    padding: 28px;
+
+    border-radius: 12px;
+
+    border: 1px solid #e2e8f0;
+
+    box-shadow: 0 4px 15px rgba(0,0,0,0.03);
+}
+
+.side-icon {
+    font-size: 30px;
+    margin-bottom: 10px;
+}
+
+.side-card h2 {
+    font-size: 23px;
+    color: #0f172a;
+    margin-bottom: 15px;
+}
+
+.side-card h3 {
+    color: #0284c7;
+    font-size: 18px;
+    margin-top: 5px;
+}
+
+.side-card p {
+    color: #64748b;
+    font-size: 15px;
+}
+
+.side-card hr {
+    border: none;
+    border-top: 1px solid #e2e8f0;
+    margin: 20px 0;
+}
+
+.side-card .small-text {
+    font-size: 14px;
+}
+
+.side-card ul {
+    padding-left: 20px;
+}
+
+.side-card ul li {
+    color: #64748b;
+    font-size: 14px;
+    margin-bottom: 12px;
+}
+
+.choose-card {
+    background: #eff6ff;
+}
+
+
+
+.about-section {
+    margin-top: 60px;
+
+    padding: 35px;
+
+    background: white;
+
+    border-radius: 12px;
+
+    border-left: 5px solid #0284c7;
+}
+
+.about-section h2 {
+    font-size: 27px;
+    color: #0f172a;
+    margin: 12px 0;
+}
+
+.about-section p {
+    color: #64748b;
+    margin-bottom: 15px;
+}
+
+
+
+
+.contact-section {
+    background: #eaf4ff;
+
+    text-align: center;
+
+    padding: 65px 6%;
+}
+
+.contact-section h2 {
+    font-size: 32px;
+    color: #0f172a;
+    margin: 12px 0;
+}
+
+.contact-section > p {
+    color: #64748b;
+    margin-bottom: 35px;
+}
+
+.contact-info {
+    display: flex;
+    justify-content: center;
+    gap: 60px;
+    flex-wrap: wrap;
+}
+
+.contact-info h3 {
+    color: #0f172a;
+    margin-bottom: 8px;
+}
+
+.contact-info p {
+    color: #64748b;
+}
+
+
+.footer {
+    background: #0f172a;
+    color: white;
+
+    padding: 45px 6%;
+
+    text-align: center;
+}
+
+.footer h2 {
+    font-size: 27px;
+    margin-bottom: 8px;
+}
+
+.footer h2 span {
+    color: #38bdf8;
+}
+
+.footer-content > p {
+    color: #cbd5e1;
+}
+
+.footer-links {
+    margin: 25px 0;
+}
+
+.footer-links a {
+    color: white;
+    margin: 0 15px;
+    font-size: 15px;
+}
+
+.footer-links a:hover {
+    color: #38bdf8;
+}
+
+.footer hr {
+    border: none;
+    border-top: 1px solid #334155;
+    margin: 20px 0;
+}
+
+.footer .copyright {
+    font-size: 13px;
+    color: #94a3b8;
+}
+
+
+
+@media screen and (max-width: 900px) {
+
+    .container {
+        grid-template-columns: 1fr;
+    }
+
+    .sidebar {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .choose-card {
+        grid-column: span 2;
+    }
+
+}
+
+
+@media screen and (max-width: 600px) {
+
+    .header {
+        flex-direction: column;
+        padding: 15px 10px;
+        gap: 10px;
+    }
+
+    .navbar ul {
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    .navbar ul li a {
+        font-size: 14px;
+        padding: 10px;
+    }
+
+
+    .hero {
+        padding: 50px 25px;
+        min-height: 380px;
+    }
+
+    .hero h1 {
+        font-size: 34px;
+    }
+
+    .hero p {
+        font-size: 15px;
+    }
+
+
+    .container {
+        padding: 35px 18px;
+    }
+
+
+    .book-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .section-heading h2 {
+        font-size: 25px;
+    }
+
+
+    .sidebar {
+        display: flex;
+    }
+
+    .choose-card {
+        grid-column: auto;
+    }
+
+
+    .about-section {
+        padding: 25px;
+    }
+
+    .about-section h2 {
+        font-size: 23px;
+    }
+
+
+    .contact-info {
+        flex-direction: column;
+        gap: 25px;
+    }
+
+
+    .footer-links a {
+        display: inline-block;
+        margin: 8px;
+    }
+
+}
+    </style>
+</head>
+<body>
+
+    <header class="header">
+
+        <div class="logo">
+            <h1>BBU<span>Library.</span></h1>
+        </div>
+
+        <nav class="navbar">
+
+            <ul>
+                <li><a href="#home" class="active">Home</a></li>
+
+                <li class="dropdown">
+                    <a href="#books">Book ▾</a>
+
+                    <ul class="dropdown-menu">
+                        <li><a href="#frontend">Front End</a></li>
+                        <li><a href="#python">Python</a></li>
+                        <li><a href="#data-structure">Data Structure</a></li>
+                        <li><a href="#database">Database</a></li>
+                        <li><a href="#network">Computer Network</a></li>
+                    </ul>
+                </li>
+
+                <li><a href="#about">About</a></li>
+
+                <li><a href="#contact">Contact</a></li>
+
+                <li><a href="login.html" target="_blank">Login</a></li>
+
+                <li class="profile-item">
+                    <a href="" class="profile-pic" title="My Profile">
+                        <!-- Put your photo in the same folder and name it profile.jpg -->
+                        <img src="../photo/rotin.jpg" alt="My profile picture"
+                             onerror="this.style.display='none'">
+                    </a>
+                </li>
+            </ul>
+
+        </nav>
+
+    </header>
+
+    <section class="hero" id="home">
+
+        <div class="hero-content">
+
+            <span class="hero-label">WELCOME TO BBU LEARNING</span>
+
+            <h1>
+                Discover Knowledge.<br>
+                <span>Build Your Future.</span>
+            </h1>
+
+            <p>
+                Explore our learning resources, improve your IT skills,
+                and discover new opportunities through knowledge.
+            </p>
+
+            <a href="#books" class="hero-btn">
+                Explore Our Books →
+            </a>
+
+        </div>
+
+    </section>
+
+    <div class="container">
+
+        <main class="main-content">
+
+            <div class="section-heading">
+
+                <span>LEARNING RESOURCES</span>
+
+                <h2>Welcome to Our Library</h2>
+
+                <p>
+                    Our library provides educational resources
+                    for students who want to improve their knowledge
+                    in Information Technology and Programming.
+                </p>
+
+            </div>
+
+            <section class="book-section" id="books">
+
+                <div class="section-title">
+
+                    <h2>Explore Book Categories</h2>
+
+                    <p>
+                        Choose your favorite subject and start learning.
+                    </p>
+
+                </div>
+
+                <div class="book-grid">
+
+
+                    <!-- FRONT END -->
+
+                    <article class="book-card" id="frontend">
+
+                        <div class="book-icon">🌐</div>
+
+                        <h3>Front End Development</h3>
+
+                        <p>
+                            Learn how to create beautiful websites
+                            using HTML, CSS, and JavaScript.
+                        </p>
+
+                        <a href="https://www.w3schools.com/whatis/whatis_frontenddev.asp" target="_blank">Explore More →</a>
+
+                    </article>
+
+
+                    <!-- PYTHON -->
+
+                    <article class="book-card" id="python">
+
+                        <div class="book-icon">🐍</div>
+
+                        <h3>Python Programming</h3>
+
+                        <p>
+                            Discover Python programming,
+                            problem-solving, and software development.
+                        </p>
+
+                        <a href="https://www.w3schools.com/python/python_intro.asp" target="_blank">Explore More →</a>
+
+                    </article>
+
+
+                    <!-- DATA STRUCTURE -->
+
+                    <article class="book-card" id="data-structure">
+
+                        <div class="book-icon">🧩</div>
+
+                        <h3>Data Structure</h3>
+
+                        <p>
+                            Understand arrays, linked lists,
+                            stacks, queues, trees, and algorithms.
+                        </p>
+
+                        <a href="https://www.w3schools.com/dsa/dsa_intro.php" target="_blank">Explore More →</a>
+
+                    </article>
+
+
+                    <!-- DATABASE -->
+
+                    <article class="book-card" id="database">
+
+                        <div class="book-icon">🗄️</div>
+
+                        <h3>Database Management</h3>
+
+                        <p>
+                            Study SQL, database design,
+                            relationships, and data management.
+                        </p>
+
+                        <a href="https://www.geeksforgeeks.org/blogs/backend-development/" target="_blank">Explore More →</a>
+
+                    </article>
+
+
+                    <!-- COMPUTER NETWORK -->
+
+                    <article class="book-card" id="network">
+
+                        <div class="book-icon">🌍</div>
+
+                        <h3>Computer Network</h3>
+
+                        <p>
+                            Learn networking concepts,
+                            LAN, WAN, IP addressing, and network devices.
+                        </p>
+
+                        <a href="https://www.geeksforgeeks.org/computer-networks/computer-network-tutorials/" target="_blank">Explore More →</a>
+
+                    </article>
+
+
+                    <!-- MORE RESOURCES -->
+
+                    <article class="book-card">
+
+                        <div class="book-icon">💡</div>
+
+                        <h3>More IT Resources</h3>
+
+                        <p>
+                            Discover more technology topics
+                            and expand your computer knowledge.
+                        </p>
+
+                        <a href="https://www.w3schools.com/" target="_blank">Explore More →</a>
+
+                    </article>
+                </div>
+
+            </section>
+
+            <!-- ABOUT SECTION -->
+
+            <section class="about-section" id="about">
+
+                <span>ABOUT OUR LIBRARY</span>
+
+                <h2>Learning Today, Leading Tomorrow</h2>
+
+                <p>
+                    BBU Learning Library is an educational platform
+                    designed to help students access learning resources
+                    in programming, computer science, and information
+                    technology.
+                </p>
+
+                <p>
+                    Our goal is to encourage students to learn new skills,
+                    develop creative thinking, and build a strong foundation
+                    for their future careers.
+                </p>
+
+            </section>
+
+
+        </main>
+
+
+        <!-- RIGHT SIDEBAR -->
+
+        <aside class="sidebar">
+
+
+            <!-- LIBRARY HOURS -->
+
+            <div class="side-card">
+
+                <div class="side-icon">🕒</div>
+
+                <h2>Library Hours</h2>
+
+                <p>Monday - Saturday</p>
+
+                <h3>7:00 AM - 5:00 PM</h3>
+
+                <hr>
+
+                <p class="small-text">
+                    Sunday: Closed
+                </p>
+
+            </div>
+
+
+            <!-- LIBRARY POLICY -->
+
+            <div class="side-card">
+
+                <div class="side-icon">📋</div>
+
+                <h2>Library Policy</h2>
+
+                <ul>
+                    <li>Respect all learning materials.</li>
+
+                    <li>Use resources for educational purposes.</li>
+
+                    <li>Keep the learning environment clean.</li>
+
+                    <li>Respect other students.</li>
+
+                    <li>Do not copy materials without permission.</li>
+                </ul>
+
+            </div>
+
+
+            <!-- WHY CHOOSE US -->
+
+            <div class="side-card choose-card">
+
+                <div class="side-icon">⭐</div>
+
+                <h2>Why Choose Us?</h2>
+
+                <p>
+                    Easy access to IT learning topics,
+                    organized study resources, and
+                    a student-friendly learning environment.
+                </p>
+
+            </div>
+
+
+        </aside>
+
+    </div>
+
+    <section class="contact-section" id="contact">
+
+        <span>GET IN TOUCH</span>
+
+        <h2>Contact Our Library</h2>
+
+        <p>
+            Have questions or need more information?
+            We welcome students who are interested in learning.
+        </p>
+
+        <div class="contact-info">
+
+            <div>
+                <h3>📍 Location</h3>
+                <p>BBU Siem Reap Campus, Cambodia</p>
+            </div>
+
+            <div>
+                <h3>📚 Learning</h3>
+                <p>Information Technology & Programming</p>
+            </div>
+
+        </div>
+
+    </section>
+
+    <footer class="footer">
+
+        <div class="footer-content">
+
+            <h2>BBU<span>Library.</span></h2>
+
+            <p>
+                Discover Knowledge. Build Your Future.
+            </p>
+            <hr>
+
+            <p class="copyright">
+                © 2026 BBU Learning Library.
+                All Rights Reserved.
+            </p>
+
+        </div>
+
+    </footer>
+</body>
+</html>
+

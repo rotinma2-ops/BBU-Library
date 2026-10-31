@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Times New Roman', Times, serif;
+            margin: 0;
+            padding: 0;
+            background-color: rgb(25, 5, 70);
+        }
+        div {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            
+        }
+        form {
+            width: 400px;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            background-color: darkcyan;
+        }
+
+        fieldset{
+            border: none;
+        }
+     
+        legend {
+            font-size: 1.5em;
+            margin-bottom: 10px;
+            font-weight: bolder;
+            font-family: 'Times New Roman', Times, serif;
+            text-align: center;
+            font-size: 40;
+        }
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-size: 20px;
+
+        }
+        input[type="text"], input[type="password"]{
+            width: 96%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }  
+        select {
+            width: 102%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }  
+        input[type="radio"] {
+                margin-right: 5px;
+            }
+        
+        input[type="submit"] {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            width: 102%;
+            border-style: inset;
+
+        }
+    </style>
+</head>
+<body>
+    <div>
+        <form action="">
+            <fieldset>
+                <legend>Welcome BBU Library</legend>
+                <br>
+                <label for="">Full-Name</label><br>
+                <input type="text" placeholder="full-name">
+                <br><br>
+                <label for="">Password</label> <br>
+                <input type="password" placeholder="password" required>
+                <br><br>
+                <label for="">Gender</label><br>
+                <input type="radio" name="gender" id="" value="Female">Female
+                <input type="radio" name="gender" id="" value="Male">Male
+                <br> <br>
+                <label for="">Hobbies</label>
+                <select >
+                    <option selected hidden > <span style="color: darkgray;">None</span></option>
+                    <option value="">Reading</option>
+                    <option value="">Playing Sport</option>
+                    <option value="">Sleeping</option>
+                    <option value="">Eating</option>
+                    <option value="">Playing game</option>
+                </select>
+                <br><br>
+                <input type="submit" value="Register">
+            </fieldset>
+        </form>
+    </div>
+</body>
+</html>
